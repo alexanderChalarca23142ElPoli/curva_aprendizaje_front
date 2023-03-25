@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 
 import { useSelector, useDispatch } from "react-redux";
@@ -15,9 +15,13 @@ const ListRecord = () => {
 
   let dispatch = useDispatch();
 
+  const fetchBusinesses = useCallback(() => {
+    return dispatch(getUsersStart());
+  }, [dispatch])
+
   useEffect(() => {
-    dispatch(getUsersStart());
-  }, []);
+    fetchBusinesses();
+  }, [fetchBusinesses]);
 
   const onDelete = (id) => {
     if (window.confirm("¿Está seguro de que desea eliminar este registro?")) {

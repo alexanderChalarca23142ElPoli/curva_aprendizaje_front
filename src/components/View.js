@@ -27,6 +27,8 @@ const View = () => {
             </Card>
 
           );
+        } else {
+          return null;
         }
       })
       }
